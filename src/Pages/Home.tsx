@@ -1,58 +1,57 @@
+import { useEffect, useState } from 'react'
 import Banner from '../components/Banner'
 import ProductsList from '../components/ProductsList'
-import Game from '../models/Game'
 
-const promoções: Game[] = [
-  {
-    id: 1,
-    category: 'Ação',
-    description: 'Teste',
-    image: '//place-hold.it/222x250',
-    infos: ['-10%', 'R$ 150'],
-    system: 'Windons',
-    title: 'Sei la'
-  },
-  {
-    id: 2,
-    category: 'Ação',
-    description: 'Teste',
-    image: '//place-hold.it/222x250',
-    infos: ['-10%', 'R$ 150'],
-    system: 'Windons',
-    title: 'Sei la'
-  },
-  {
-    id: 3,
-    category: 'Ação',
-    description: 'Teste',
-    image: '//place-hold.it/222x250',
-    infos: ['-10%', 'R$ 150'],
-    system: 'Windons',
-    title: 'Sei la'
-  },
-  {
-    id: 4,
-    category: 'Ação',
-    description: 'Teste',
-    image: '//place-hold.it/222x250',
-    infos: ['-10%', 'R$ 150'],
-    system: 'Windons',
-    title: 'Sei la'
+export interface GalleryType {
+  type: 'image' | 'video'
+  url: string
+}
+
+export type Game = {
+  id: number
+  name: string
+  description: string
+  release_data?: string
+  prices: {
+    discount?: number
+    old?: number
+    current?: number
   }
-]
-
-// const emBreve: Game[] = {
-//   {
-
-//   }
-// }
+  details: {
+    category: string
+    system: string
+    developer: string
+    publisher: string
+    languages: string[]
+  }
+  media: {
+    thumbnail: string
+    cover: string
+    gallery: GalleryType[]
+  }
+}
 
 export default function Home() {
+  const [promocoes, setPromocoes] = useState<Game[]>([])
+  const [emBreve, setEmBreve] = useState<Game[]>([])
+
+  useEffect(() => {
+    fetch('https://fake-api-tau.vercel.app/api/eplay/promocoes')
+      .then((res) => res.json())
+      .then((res) => setPromocoes(res))
+  }, [])
+
+  useEffect(() => {
+    fetch('https://fake-api-tau.vercel.app/api/eplay/em-breve')
+      .then((res) => res.json())
+      .then((res) => setEmBreve(res))
+  }, [])
+
   return (
     <>
       <Banner />
-      <ProductsList title="Promoçôes" background="gray" games={promoções} />
-      <ProductsList title="Em Breve" background="black" games={promoções} />
+      <ProductsList title="Promoçôes" background="gray" games={promocoes} />
+      <ProductsList title="Em Breve" background="black" games={emBreve} />
     </>
   )
 }

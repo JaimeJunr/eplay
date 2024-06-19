@@ -1,27 +1,53 @@
+import { useEffect, useState } from 'react'
 import Banner from '../components/Banner'
 import ProductsList from '../components/ProductsList'
-import Game from '../models/Game'
-
-const promoções: Game[] = [
-  {
-    id: 1,
-    category: 'Ação',
-    description: 'Teste',
-    image: '//placehold.it/222x250',
-    infos: ['-10%', 'R$ 150'],
-    system: 'Windons',
-    title: 'Sei la'
-  }
-]
+import { Game } from './Home'
 
 export default function Categories() {
+  const [action, setAction] = useState<Game[]>([])
+  const [sport, setSport] = useState<Game[]>([])
+  const [rpg, setRpg] = useState<Game[]>([])
+  const [fight, setFight] = useState<Game[]>([])
+  const [simulation, setSimulation] = useState<Game[]>([])
+
+  useEffect(() => {
+    fetch('https://fake-api-tau.vercel.app/api/eplay/acao')
+      .then((res) => res.json())
+      .then((res) => setAction(res))
+  }, [])
+
+  useEffect(() => {
+    fetch('https://fake-api-tau.vercel.app/api/eplay/esportes')
+      .then((res) => res.json())
+      .then((res) => setSport(res))
+  }, [])
+
+  useEffect(() => {
+    fetch('https://fake-api-tau.vercel.app/api/eplay/rpg')
+      .then((res) => res.json())
+      .then((res) => setRpg(res))
+  }, [])
+
+  useEffect(() => {
+    fetch('https://fake-api-tau.vercel.app/api/eplay/luta')
+      .then((res) => res.json())
+      .then((res) => setFight(res))
+  }, [])
+
+  useEffect(() => {
+    fetch('https://fake-api-tau.vercel.app/api/eplay/simulacao')
+      .then((res) => res.json())
+      .then((res) => setSimulation(res))
+  }, [])
+
   return (
     <>
       <Banner />
-      <ProductsList title="RPG" background="gray" games={promoções} />
-      <ProductsList title="Ação" background="black" games={promoções} />
-      <ProductsList title="Aventura" background="gray" games={promoções} />
-      <ProductsList title="Fps" background="black" games={promoções} />
+      <ProductsList title="RPG" background="black" games={rpg} />
+      <ProductsList title="Ação" background="gray" games={action} />
+      <ProductsList title="Esportes" background="black" games={sport} />
+      <ProductsList title="Luta" background="gray" games={fight} />
+      <ProductsList title="Simulação" background="black" games={simulation} />
     </>
   )
 }

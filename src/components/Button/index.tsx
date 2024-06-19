@@ -1,17 +1,30 @@
 import * as S from './styles'
 
-type Props = {
+export type Props = {
   type: 'button' | 'link'
   title: string
-  to: string
+  to?: string
   onClick?: () => void
   children: string
+  variant: 'primary' | 'secondary'
 }
 
-export default function Button({ type, children, title, to, onClick }: Props) {
+export default function Button({
+  type,
+  children,
+  title,
+  to,
+  onClick,
+  variant = 'primary'
+}: Props) {
   if (type === 'button')
     return (
-      <S.ButtonContain type="button" title={title} onClick={onClick}>
+      <S.ButtonContain
+        variant={variant}
+        type="button"
+        title={title}
+        onClick={onClick}
+      >
         {children}
       </S.ButtonContain>
     )
