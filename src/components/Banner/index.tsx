@@ -1,19 +1,17 @@
 import * as S from './styles'
-import { useEffect, useState } from 'react'
 
 import Tag from '../Tag'
 import Button from '../Button'
-import { Game } from '../../Pages/Home'
+
 import { formatPrice } from '../ProductsList'
+import { useGetFeaturedGameQuery } from '../../services/api'
 
 export default function Banner() {
-  const [destaque, setDestaque] = useState<Game>()
+  const { data: destaque, isLoading } = useGetFeaturedGameQuery()
 
-  useEffect(() => {
-    fetch('https://fake-api-tau.vercel.app/api/eplay/destaque')
-      .then((res) => res.json())
-      .then((res) => setDestaque(res))
-  }, [])
+  if (!destaque) {
+    return <h3>Loading...</h3>
+  }
 
   return (
     <S.Contain style={{ backgroundImage: `url(${destaque?.media.cover})` }}>

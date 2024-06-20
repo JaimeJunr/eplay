@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { Colors } from '../../styles'
+import { Colors, breackpoints } from '../../styles'
 
 export const HeaderBar = styled.header`
   background-color: ${Colors.gray};
@@ -20,6 +20,10 @@ export const HeaderBar = styled.header`
     display: flex;
     align-items: center;
   }
+
+  @media (max-width: ${breackpoints.desktop}) {
+    display: none;
+  }
 `
 export const Links = styled.ul`
   display: flex;
@@ -29,7 +33,7 @@ export const LinkItem = styled.li`
   margin-right: 16px;
 `
 
-export const LinkCart = styled.a`
+export const CartButton = styled.a`
   display: flex;
   img {
     margin-left: 16px;

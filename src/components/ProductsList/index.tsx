@@ -1,9 +1,11 @@
 import { Game } from '../../Pages/Home'
 import Product from '../Product'
+
 import * as S from './styles'
 
 export type Props = {
   title: string
+  id?: string
   background: 'gray' | 'black'
   games: Game[]
 }
@@ -15,7 +17,7 @@ export const formatPrice = (preco = 0) => {
   }).format(preco)
 }
 
-export default function ProductsList({ title, background, games }: Props) {
+export default function ProductsList({ title, background, games, id }: Props) {
   const getGameTags = (game: Game) => {
     const tags = []
 
@@ -34,7 +36,7 @@ export default function ProductsList({ title, background, games }: Props) {
   }
 
   return (
-    <S.Section background={background}>
+    <S.Section id={id} background={background}>
       <div className="container">
         <h2>{title}</h2>
         <S.List>

@@ -1,9 +1,6 @@
 import * as S from './styles'
 import Section from '../Section'
 
-import hogwarts from '../../images/fundo_hogwarts.png'
-import midiaHogwarts from '../../images/midia_hogwarts.png'
-
 import iconZoom from '../../images/icon-zoom.png'
 import iconPlay from '../../images/icon-play.png'
 import iconFechar from '../../images/fechar.png'
