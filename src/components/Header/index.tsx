@@ -5,7 +5,16 @@ import * as S from './styles'
 import logo from '../../images/logo.svg'
 import carrinho from '../../images/carrinho.svg'
 
+import { hadleOpen } from '../../store/reducers/cartSlice'
+
+import { useDispatch, useSelector } from 'react-redux'
+import { RootReducer } from '../../store'
+
 export default function Header() {
+  const dispatch = useDispatch()
+
+  const { items } = useSelector((state: RootReducer) => state.cart)
+
   return (
     <div className="container">
       <S.HeaderBar>
@@ -28,9 +37,10 @@ export default function Header() {
             </S.Links>
           </nav>
         </div>
-        <S.LinkCart href="#">
-          0 - produto(s) <img src={carrinho} alt="Carrinho de Compras" />
-        </S.LinkCart>
+        <S.CartButton onClick={() => dispatch(hadleOpen())}>
+          {items.length} - produto(s){' '}
+          <img src={carrinho} alt="Carrinho de Compras" />
+        </S.CartButton>
       </S.HeaderBar>
     </div>
   )

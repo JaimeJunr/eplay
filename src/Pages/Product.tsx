@@ -6,18 +6,12 @@ import Section from '../components/Section'
 import Gallery from '../components/Gallery'
 
 import { Game } from './Home'
+import { useGetGameQuery } from '../services/api'
 
 export default function Product() {
   const { id } = useParams()
 
-  const [game, setGame] = useState<Game>()
-
-  useEffect(() => {
-    fetch(`https://fake-api-tau.vercel.app/api/eplay/jogos/${id}`)
-      .then((res) => res.json())
-      .then((res) => setGame(res))
-      .catch((error) => console.error('Error fetching game:', error))
-  }, [])
+  const { data: game } = useGetGameQuery(id!)
 
   console.log(game)
 
