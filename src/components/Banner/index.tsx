@@ -7,7 +7,7 @@ import { formatPrice } from '../ProductsList'
 import { useGetFeaturedGameQuery } from '../../services/api'
 
 export default function Banner() {
-  const { data: destaque, isLoading } = useGetFeaturedGameQuery()
+  const { data: destaque } = useGetFeaturedGameQuery()
 
   if (!destaque) {
     return <h3>Loading...</h3>

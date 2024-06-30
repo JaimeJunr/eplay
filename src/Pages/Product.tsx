@@ -1,17 +1,15 @@
 import { useParams } from 'react-router-dom'
-import { useEffect, useState } from 'react'
 
 import Hero from '../components/Hero'
 import Section from '../components/Section'
 import Gallery from '../components/Gallery'
 
-import { Game } from './Home'
 import { useGetGameQuery } from '../services/api'
 
 export default function Product() {
-  const { id } = useParams()
+  const { id } = useParams<{ id: string }>()
 
-  const { data: game } = useGetGameQuery(id!)
+  const { data: game } = useGetGameQuery(id || '')
 
   console.log(game)
 
