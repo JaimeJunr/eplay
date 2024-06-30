@@ -1,19 +1,13 @@
 import Banner from '../components/Banner'
 import ProductsList from '../components/ProductsList'
-import {
-  useGetActionGamesQuery,
-  useGetFightGamesQuery,
-  useGetRpgGamesQuery,
-  useGetSimulationGamesQuery,
-  useGetSportGamesQuery
-} from '../services/api'
+import * as Query from '../services/api'
 
 export default function Categories() {
-  const { data: action } = useGetActionGamesQuery()
-  const { data: rpg } = useGetRpgGamesQuery()
-  const { data: fight } = useGetFightGamesQuery()
-  const { data: simulation } = useGetSimulationGamesQuery()
-  const { data: sport } = useGetSportGamesQuery()
+  const { data: action } = Query.useGetActionGamesQuery()
+  const { data: rpg } = Query.useGetRpgGamesQuery()
+  const { data: fight } = Query.useGetFightGamesQuery()
+  const { data: simulation } = Query.useGetSimulationGamesQuery()
+  const { data: sport } = Query.useGetSportGamesQuery()
 
   if (!action || !rpg || !fight || !simulation || !sport) {
     return <h2>Loading...</h2>

@@ -2,8 +2,8 @@ import { Link } from 'react-router-dom'
 
 import * as S from './styles'
 
-import logo from '../../images/logo.svg'
-import carrinho from '../../images/carrinho.svg'
+import Logo from '../../images/logo.svg'
+import Cart from '../../images/carrinho.svg'
 
 import { hadleOpen } from '../../store/reducers/cartSlice'
 
@@ -30,7 +30,7 @@ export default function Header() {
               <span />
             </S.Hamburguer>
             <Link to="/">
-              <img src={logo} alt="Eplay" />
+              <img src={Logo} alt="Eplay" />
             </Link>
             <nav>
               <S.Links>
@@ -64,7 +64,7 @@ export default function Header() {
           <S.CartButton onClick={() => dispatch(hadleOpen())}>
             {items.length}
             <span>- produto(s)</span>
-            <img src={carrinho} alt="Carrinho de Compras" />
+            <img src={Cart} alt="Carrinho de Compras" />
           </S.CartButton>
         </S.HeaderRow>
         <S.NavMobile className={isMenuOpen ? 'is-open' : ''}>

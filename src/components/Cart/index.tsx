@@ -6,7 +6,7 @@ import { RootReducer } from '../../store'
 
 import { useSelector, useDispatch } from 'react-redux'
 import { hadleOpen, remove } from '../../store/reducers/cartSlice'
-import { formatPrice } from '../ProductsList'
+import { formatPrice } from '../../utils'
 
 export default function Cart() {
   const { isOpen, items } = useSelector((state: RootReducer) => state.cart)

@@ -3,7 +3,7 @@ import Section from '../Section'
 
 import iconZoom from '../../images/icon-zoom.png'
 import iconPlay from '../../images/icon-play.png'
-import iconFechar from '../../images/fechar.png'
+import iconClose from '../../images/fechar.png'
 import { useState } from 'react'
 
 interface GalleryType {
@@ -62,12 +62,12 @@ export default function Gallery({ defaultCover, name, items }: Props) {
           ))}
         </S.Itens>
       </Section>
-      <S.Modal className={modal.visibily ? 'visivel' : ''}>
+      <S.Modal className={modal.visibily ? 'is-visible' : ''}>
         <S.ModalContent className="container">
           <header>
             <h4>{name}</h4>
             <img
-              src={iconFechar}
+              src={iconClose}
               alt="Fechar"
               onClick={() => {
                 setModal({ visibily: false, type: 'image', url: '' })

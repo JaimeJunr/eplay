@@ -4,8 +4,7 @@ import Button from '../Button'
 import Tag from '../Tag'
 
 import { Game } from '../../Pages/Home'
-import { formatPrice } from '../ProductsList'
-
+import { formatPrice } from '../../utils'
 import { add } from '../../store/reducers/cartSlice'
 
 import { useDispatch } from 'react-redux'

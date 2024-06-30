@@ -1,6 +1,7 @@
 import Banner from '../components/Banner'
 import ProductsList from '../components/ProductsList'
-import { useGetOnSaleQuery, useGetSoonQuery } from '../services/api'
+
+import * as Query from '../services/api'
 
 export interface GalleryType {
   type: 'image' | 'video'
@@ -32,8 +33,8 @@ export type Game = {
 }
 
 export default function Home() {
-  const { data: promocoes } = useGetOnSaleQuery()
-  const { data: emBreve } = useGetSoonQuery()
+  const { data: promocoes } = Query.useGetOnSaleQuery()
+  const { data: emBreve } = Query.useGetSoonQuery()
 
   if (!promocoes || !emBreve) {
     return (

@@ -3,7 +3,7 @@ import * as S from './styles'
 import Tag from '../Tag'
 import Button from '../Button'
 
-import { formatPrice } from '../ProductsList'
+import { formatPrice } from '../../utils'
 import { useGetFeaturedGameQuery } from '../../services/api'
 
 export default function Banner() {

@@ -4,12 +4,12 @@ import Hero from '../components/Hero'
 import Section from '../components/Section'
 import Gallery from '../components/Gallery'
 
-import { useGetGameQuery } from '../services/api'
+import * as Query from '../services/api'
 
 export default function Product() {
   const { id } = useParams<{ id: string }>()
 
-  const { data: game } = useGetGameQuery(id || '')
+  const { data: game } = Query.useGetGameQuery(id || '')
 
   console.log(game)
 

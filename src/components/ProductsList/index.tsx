@@ -1,4 +1,5 @@
 import { Game } from '../../Pages/Home'
+import { formatPrice } from '../../utils'
 import Product from '../Product'
 
 import * as S from './styles'
@@ -8,13 +9,6 @@ export type Props = {
   id?: string
   background: 'gray' | 'black'
   games: Game[]
-}
-
-export const formatPrice = (preco = 0) => {
-  return new Intl.NumberFormat('pt-br', {
-    style: 'currency',
-    currency: 'BRL'
-  }).format(preco)
 }
 
 export default function ProductsList({ title, background, games, id }: Props) {
