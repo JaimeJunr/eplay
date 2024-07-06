@@ -2,15 +2,16 @@ import * as S from './styles'
 
 import Tag from '../Tag'
 import Button from '../Button'
+import { Loader } from '../Loader'
 
-import { formatPrice } from '../ProductsList'
+import { formatPrice } from '../../utils'
 import { useGetFeaturedGameQuery } from '../../services/api'
 
 export default function Banner() {
   const { data: destaque, isLoading } = useGetFeaturedGameQuery()
 
-  if (!destaque) {
-    return <h3>Loading...</h3>
+  if (isLoading) {
+    return <Loader />
   }
 
   return (

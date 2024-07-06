@@ -1,40 +1,53 @@
-import Banner from '../components/Banner'
 import ProductsList from '../components/ProductsList'
-import {
-  useGetActionGamesQuery,
-  useGetFightGamesQuery,
-  useGetRpgGamesQuery,
-  useGetSimulationGamesQuery,
-  useGetSportGamesQuery
-} from '../services/api'
+import * as Query from '../services/api'
 
 export default function Categories() {
-  const { data: action } = useGetActionGamesQuery()
-  const { data: rpg } = useGetRpgGamesQuery()
-  const { data: fight } = useGetFightGamesQuery()
-  const { data: simulation } = useGetSimulationGamesQuery()
-  const { data: sport } = useGetSportGamesQuery()
+  const { data: action, isLoading: isLoadingAction } =
+    Query.useGetActionGamesQuery()
+  const { data: rpg, isLoading: isLoadingRpg } = Query.useGetRpgGamesQuery()
+  const { data: fight, isLoading: isLoadingFight } =
+    Query.useGetFightGamesQuery()
+  const { data: simulation, isLoading: isLoadingSimulation } =
+    Query.useGetSimulationGamesQuery()
+  const { data: sport, isLoading: isLoadingSport } =
+    Query.useGetSportGamesQuery()
 
-  if (!action || !rpg || !fight || !simulation || !sport) {
-    return <h2>Loading...</h2>
-  }
   return (
     <>
-      <Banner />
-      <ProductsList id="rpg" title="RPG" background="black" games={rpg} />
-      <ProductsList id="action" title="Ação" background="gray" games={action} />
+      <ProductsList
+        id="rpg"
+        title="RPG"
+        background="black"
+        games={rpg}
+        isLoading={isLoadingRpg}
+      />
+      <ProductsList
+        id="action"
+        title="Ação"
+        background="gray"
+        games={action}
+        isLoading={isLoadingAction}
+      />
       <ProductsList
         id="sports"
         title="Esportes"
         background="black"
         games={sport}
+        isLoading={isLoadingSport}
       />
-      <ProductsList id="fight" title="Luta" background="gray" games={fight} />
+      <ProductsList
+        id="fight"
+        title="Luta"
+        background="gray"
+        games={fight}
+        isLoading={isLoadingFight}
+      />
       <ProductsList
         id="simulation"
         title="Simulação"
         background="black"
         games={simulation}
+        isLoading={isLoadingSimulation}
       />
     </>
   )

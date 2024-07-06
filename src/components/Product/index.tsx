@@ -29,7 +29,10 @@ export default function Product({
   }
 
   return (
-    <S.Card to={`/product/${id}`}>
+    <S.Card
+      title={`Clique aqui para saber mais sobre ${title} `}
+      to={`/product/${id}`}
+    >
       <img src={image} alt={title} />
       <S.Infos>
         {infos.map((info) => (

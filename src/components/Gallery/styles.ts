@@ -25,6 +25,7 @@ export const Itens = styled.ul`
 
 export const Item = styled.li`
   position: relative;
+  cursor: zoom-in;
 
   > img {
     border: 2px solid ${Colors.white};
@@ -54,7 +55,7 @@ export const Modal = styled.div`
   width: 100%;
   height: 100%;
 
-  &.visivel {
+  &.is-visible {
     display: flex;
   }
 
@@ -84,6 +85,18 @@ export const ModalContent = styled.div`
     h4 {
       font-size: 18px;
       font-weight: bold;
+    }
+
+    img {
+      height: 16px;
+      width: 16px;
+      cursor: pointer;
+
+      &:hover {
+        opacity: 0.7;
+        transition: opacity 0.5s ease;
+        transform: scale(1.2);
+      }
     }
   }
 
