@@ -1,12 +1,13 @@
 import * as S from './styles'
 
 export type Props = {
-  type: 'button' | 'link'
+  type: 'button' | 'link' | 'submit'
   title: string
   to?: string
   onClick?: () => void
   children: string
   variant: 'primary' | 'secondary'
+  disabled?: boolean
 }
 
 export default function Button({
@@ -15,15 +16,17 @@ export default function Button({
   title,
   to,
   onClick,
+  disabled,
   variant = 'primary'
 }: Props) {
-  if (type === 'button')
+  if (type === 'button' || type === 'submit')
     return (
       <S.ButtonContain
         variant={variant}
-        type="button"
+        type={type}
         title={title}
         onClick={onClick}
+        disabled={disabled}
       >
         {children}
       </S.ButtonContain>

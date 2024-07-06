@@ -30,7 +30,9 @@ export default function Header() {
               <span />
             </S.Hamburguer>
             <Link to="/">
-              <img src={Logo} alt="Eplay" />
+              <h1>
+                <img src={Logo} alt="EPLAY" />
+              </h1>
             </Link>
             <nav>
               <S.Links>
@@ -61,7 +63,7 @@ export default function Header() {
               </S.Links>
             </nav>
           </div>
-          <S.CartButton onClick={() => dispatch(hadleOpen())}>
+          <S.CartButton role="button" onClick={() => dispatch(hadleOpen())}>
             {items.length}
             <span>- produto(s)</span>
             <img src={Cart} alt="Carrinho de Compras" />

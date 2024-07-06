@@ -4,3 +4,6 @@ export const formatPrice = (preco = 0) => {
     currency: 'BRL'
   }).format(preco)
 }
+
+export const getTotal = (items: Game[]) =>
+  items.reduce((sum, item) => sum + (item.prices.current || 0), 0)

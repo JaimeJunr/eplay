@@ -6,11 +6,6 @@ import iconPlay from '../../images/icon-play.png'
 import iconClose from '../../images/fechar.png'
 import { useState } from 'react'
 
-interface GalleryType {
-  type: 'image' | 'video'
-  url: string
-}
-
 type Props = {
   defaultCover: string
   name: string

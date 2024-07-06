@@ -3,7 +3,9 @@ import { Props } from './index'
 import { Colors, breackpoints } from '../../styles'
 import { Card } from '../Product/styles'
 
-export const Section = styled.section<Omit<Props, 'title' | 'games'>>`
+export const Section = styled.section<
+  Omit<Props, 'title' | 'games' | 'isLoading'>
+>`
   background-color: ${(props) =>
     props.background === 'black' ? Colors.black : Colors.gray};
   padding: 32px 0;

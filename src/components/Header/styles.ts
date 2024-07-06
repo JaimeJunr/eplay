@@ -30,7 +30,12 @@ export const HeaderBar = styled.header`
   border-radius: 16px;
   margin-bottom: 80px;
 
-  a {
+  h1 {
+    line-height: 0;
+  }
+
+  a,
+  span {
     color: ${Colors.white};
     text-decoration: none;
     font-weight: bold;
@@ -54,8 +59,9 @@ export const HeaderRow = styled.div`
     }
   }
 `
-export const CartButton = styled.a`
+export const CartButton = styled.span`
   display: flex;
+  cursor: pointer;
   img {
     margin-left: 16px;
   }

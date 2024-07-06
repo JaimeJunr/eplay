@@ -106,3 +106,12 @@ export const CartItem = styled.li`
     background-color: transparent;
   }
 `
+
+export const Empty = styled.p`
+  color: ${Colors.white};
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 32px;
+`
